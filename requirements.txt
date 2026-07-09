@@ -1,0 +1,10 @@
+openai
+python-dotenv
+pydantic
+langgraph
+fastapi
+uvicorn[standard]
+python-multipart
+pypdf
+pytest
+httpx
