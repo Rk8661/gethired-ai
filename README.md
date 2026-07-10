@@ -84,6 +84,38 @@ npm run dev
 
 Open `http://localhost:5173`, pick a role, choose `mock` (instant) or `llm` (real model), optionally attach a resume PDF, and start the interview.
 
+## Running with Docker
+
+### Prerequisites
+
+- Docker Desktop
+
+### Build and start
+
+```bash
+docker compose up --build
+```
+
+### Access the application
+
+Frontend:
+
+```
+http://localhost:5173
+```
+
+Backend API:
+
+```
+http://localhost:8000
+```
+
+Stop the containers:
+
+```bash
+docker compose down
+```
+
 ### API
 
 | Endpoint | What it does |
@@ -124,3 +156,25 @@ Reports are written to `eval/reports/` (gitignored) as both JSON and a skimmable
 ## Security note
 
 `.env` (your real credentials) is gitignored. `.env.example` is a committed template — never put a real key in it.
+
+## AMD Hackathon Note
+
+This project was developed for the AMD Developer Hackathon ACT II.
+
+Current inference uses Fireworks AI serving the open-weight GPT-OSS-20B model through an OpenAI-compatible API.
+
+The architecture was intentionally designed to be provider-agnostic, making it straightforward to migrate inference to self-hosted vLLM running on AMD ROCm-powered hardware in future iterations.
+
+
+###ScreenShots
+
+
+<img width="1728" height="883" alt="report" src="https://github.com/user-attachments/assets/fd798c7e-82b9-4a35-8a8c-8106d2019ddd" />
+<img width="1728" height="883" alt="adapting" src="https://github.com/user-attachments/assets/39d3f9d7-94e6-4c36-aea2-cf2ec144fb3c" />
+<img width="1728" height="883" alt="suggestions" src="https://github.com/user-attachments/assets/3ac94c60-9e24-4b6c-bab9-6808e3bff871" />
+<img width="1728" height="883" alt="strategy timeline" src="https://github.com/user-attachments/assets/9d1e59c5-988e-41a4-b4c7-833869deb282" />
+<img width="1728" height="883" alt="streanths and weakness" src="https://github.com/user-attachments/assets/f3da9391-a9ed-4452-bbae-999c57f22a15" />
+<img width="1728" height="883" alt="Tech questions" src="https://github.com/user-attachments/assets/9c6410e9-5baf-437c-8195-adceaef91d4d" />
+<img width="1331" height="883" alt="job role" src="https://github.com/user-attachments/assets/3afb2c99-1ceb-4b00-bfb8-839599bf65b6" />
+<img width="1331" height="883" alt="home page" src="https://github.com/user-attachments/assets/fed4db1f-e369-4c9b-a3ad-cac561556799" />
+
