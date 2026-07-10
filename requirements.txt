@@ -1,7 +1,7 @@
 openai
 python-dotenv
 pydantic
-langgraph
+langgraph==0.6.11
 fastapi
 uvicorn[standard]
 python-multipart

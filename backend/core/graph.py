@@ -17,7 +17,6 @@ from __future__ import annotations
 from typing import Callable, Optional
 
 from langgraph.checkpoint.memory import MemorySaver
-from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
 from langgraph.graph import END, START, StateGraph
 from langgraph.types import interrupt
 
@@ -76,19 +75,7 @@ def build_graph():
         "strategize", _route, {"ask_question": "ask_question", "finalize": "finalize"}
     )
     g.add_edge("finalize", END)
-    # Allow our pydantic state models through the msgpack checkpoint serializer.
-    serde = JsonPlusSerializer(
-        allowed_msgpack_modules=[
-            ("backend.core.state", "InterviewState"),
-            ("backend.core.state", "CandidateProfile"),
-            ("backend.core.state", "Project"),
-            ("backend.core.state", "Scores"),
-            ("backend.core.state", "QuestionRecord"),
-            ("backend.core.state", "StrategyDecision"),
-            ("backend.core.state", "Directive"),
-        ]
-    )
-    return g.compile(checkpointer=MemorySaver(serde=serde))
+    return g.compile(checkpointer=MemorySaver())
 
 
 # Single compiled graph shared across sessions (each session = its own thread_id).
